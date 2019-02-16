@@ -112,6 +112,25 @@ public class MainActivity extends AppCompatActivity {
             pink.setY(pinkY);
         }
 
+        //Black
+        blackY += 8;
+
+        float blackCenterX = blackX + black.getWidth() / 2;
+        float blackCenterY = blackY + black.getHeight() / 2;
+
+        if (hitCheck(blackCenterX, blackCenterY)) {
+            blackY = frameHeight + 100;
+
+            //Change FrameWidth
+        }
+
+        if (blackY > frameHeight) {
+            blackY = -100;
+            blackX = (float)Math.floor(Math.random() * (frameWidth - black.getWidth()));
+        }
+        black.setX(blackX);
+        black.setY(blackY);
+
         // Move Box
         if (action_flag) {
             //Touching
