@@ -67,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void changePosition() {
 
+        //Orange
+        orangeY += 12;
+
+        float orangeCenterX = orangeX + orange.getWidth() / 2;
+        float orangeCenterY = orangeY + orange.getHeight() / 2;
+
+        if (hitCheck(orangeCenterX, orangeCenterY)) {
+
+        }
+
         // Move Box
         if (action_flag) {
             //Touching
@@ -88,6 +98,13 @@ public class MainActivity extends AppCompatActivity {
             box.setImageDrawable(imageBoxLeft);
         }
         box.setX(boxX);
+    }
+
+    public boolean hitCheck(float x, float y) {
+        if (boxX <= x && x <= boxX + boxSize && boxY <= y && y <= frameHeight) {
+            return true;
+        }
+        return false;
     }
 
     @Override
