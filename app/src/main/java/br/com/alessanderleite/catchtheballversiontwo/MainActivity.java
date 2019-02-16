@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         imageBoxRight = getResources().getDrawable(R.drawable.box_right);
     }
 
-    public void changePos() {
+    public void changePosition() {
 
         // Move Box
         if (action_flag) {
@@ -88,6 +88,18 @@ public class MainActivity extends AppCompatActivity {
             box.setImageDrawable(imageBoxLeft);
         }
         box.setX(boxX);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (start_flg) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                action_flag = true;
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                action_flag = false;
+            }
+        }
+        return true;
     }
 
     public void startGame(View view) {
@@ -128,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        changePos();
+                        changePosition();
                     }
                 });
             }
