@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void changePosition() {
 
+        //Add timeCount
+        timeCount += 20;
+
         //Orange
         orangeY += 12;
 
@@ -84,6 +87,30 @@ public class MainActivity extends AppCompatActivity {
         }
         orange.setX(orangeX);
         orange.setY(orangeY);
+
+        //Pink
+        if (!pink_flg && timeCount % 10000 == 0) {
+            pink_flg = true;
+            pinkY = -20;
+            pinkX = (float)Math.floor(Math.random() * (frameWidth - pink.getWidth()));
+        }
+
+        if (pink_flg) {
+            pinkY += 20;
+
+            float pinkCenterX = pinkX + pink.getWidth() / 2;
+            float pinkCenterY = pinkY + pink.getWidth() / 2;
+
+            if (hitCheck(pinkCenterX, pinkCenterY)) {
+                pinkY = frameHeight + 30;
+                score += 30;
+                //Change FrameWidth
+            }
+
+            if (pinkY > frameHeight) pink_flg = false;
+            pink.setX(pinkX);
+            pink.setY(pinkY);
+        }
 
         // Move Box
         if (action_flag) {
