@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -122,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
             blackY = frameHeight + 100;
 
             //Change FrameWidth
+            frameWidth = frameWidth * 80 / 100;
+            changeFrameWidth(frameWidth);
         }
 
         if (blackY > frameHeight) {
@@ -161,6 +164,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    public void changeFrameWidth(int frameWidth) {
+        ViewGroup.LayoutParams params = gameFrame.getLayoutParams();
+        params.width = frameWidth;
+        gameFrame.setLayoutParams(params);
     }
 
     @Override
