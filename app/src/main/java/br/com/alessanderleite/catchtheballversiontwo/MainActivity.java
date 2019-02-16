@@ -49,6 +49,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        gameFrame = findViewById(R.id.gameFrame);
+        startLayout = findViewById(R.id.startLayout);
+        box = findViewById(R.id.box);
+        black = findViewById(R.id.black);
+        orange = findViewById(R.id.orange);
+        pink = findViewById(R.id.pink);
+        scoreLabel = findViewById(R.id.scoreLabel);
+        highScoreLabel = findViewById(R.id.highScoreLabel);
+
+        imageBoxLeft = getResources().getDrawable(R.drawable.box_left);
+        imageBoxRight = getResources().getDrawable(R.drawable.box_right);
     }
 
     public void startGame(View view) {
