@@ -1,5 +1,6 @@
 package br.com.alessanderleite.catchtheballversiontwo;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     //Score
     private TextView scoreLabel, highScoreLabel;
     private int score, highScore, timeCount;
-    private SharedPreferences settins;
+    private SharedPreferences settings;
 
     //Class
     private Timer timer;
@@ -67,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
         imageBoxLeft = getResources().getDrawable(R.drawable.box_left);
         imageBoxRight = getResources().getDrawable(R.drawable.box_right);
+
+        //High Score
+        settings = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
+        highScore = settings.getInt("HIGH_SCORE", 0);
+        highScoreLabel.setText("High Score : " + highScore);
     }
 
     public void changePosition() {
@@ -204,6 +210,16 @@ public class MainActivity extends AppCompatActivity {
         black.setVisibility(View.INVISIBLE);
         orange.setVisibility(View.INVISIBLE);
         pink.setVisibility(View.INVISIBLE);
+
+        // Update High Score
+        if (score > highScore) {
+            highScore = score;
+            highScoreLabel.setText("High Score : " + highScore);
+
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("HIGH_SCORE", highScore);
+            editor.commit();
+        }
     }
 
     @Override
