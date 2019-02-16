@@ -74,8 +74,16 @@ public class MainActivity extends AppCompatActivity {
         float orangeCenterY = orangeY + orange.getHeight() / 2;
 
         if (hitCheck(orangeCenterX, orangeCenterY)) {
-
+            orangeX = frameHeight + 100;
+            score += 10;
         }
+
+        if (orangeY > frameHeight) {
+            orangeY = -100;
+            orangeX = (float)Math.floor(Math.random() * (frameWidth - orange.getWidth()));
+        }
+        orange.setX(orangeX);
+        orange.setY(orangeY);
 
         // Move Box
         if (action_flag) {
@@ -98,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
             box.setImageDrawable(imageBoxLeft);
         }
         box.setX(boxX);
+
+        scoreLabel.setText("Score : " + score);
     }
 
     public boolean hitCheck(float x, float y) {
