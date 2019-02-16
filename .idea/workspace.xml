@@ -44,13 +44,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1191" />
+          <entry key="java" value="1485" />
           <entry key="xml" value="501" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1191" />
+          <entry key="JAVA" value="1485" />
           <entry key="XML" value="501" />
         </counts>
       </usages-collector>
@@ -64,13 +64,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/alessanderleite/catchtheballversiontwo/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="104" column="36" selection-start-line="104" selection-start-column="36" selection-end-line="104" selection-end-column="36" />
+            <state relative-caret-position="468">
+              <caret line="97" column="13" lean-forward="true" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
               <folding>
-                <element signature="e#2848#3125#0" expanded="true" />
+                <element signature="e#2848#3138#0" expanded="true" />
                 <element signature="e#2949#3109#0" expanded="true" />
                 <element signature="e#3108#3109#0" expanded="true" />
-                <element signature="e#3124#3125#0" expanded="true" />
+                <element signature="e#3137#3138#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -283,7 +283,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/br/com/alessanderleite/catchtheballversiontwo/MainActivity.java</url>
-          <line>112</line>
+          <line>147</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -308,13 +308,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/alessanderleite/catchtheballversiontwo/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="104" column="36" selection-start-line="104" selection-start-column="36" selection-end-line="104" selection-end-column="36" />
+        <state relative-caret-position="468">
+          <caret line="97" column="13" lean-forward="true" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
           <folding>
-            <element signature="e#2848#3125#0" expanded="true" />
+            <element signature="e#2848#3138#0" expanded="true" />
             <element signature="e#2949#3109#0" expanded="true" />
             <element signature="e#3108#3109#0" expanded="true" />
-            <element signature="e#3124#3125#0" expanded="true" />
+            <element signature="e#3137#3138#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -62,6 +63,31 @@ public class MainActivity extends AppCompatActivity {
 
         imageBoxLeft = getResources().getDrawable(R.drawable.box_left);
         imageBoxRight = getResources().getDrawable(R.drawable.box_right);
+    }
+
+    public void changePos() {
+
+        // Move Box
+        if (action_flag) {
+            //Touching
+            boxX += 14;
+            box.setImageDrawable(imageBoxRight);
+        } else {
+            //Releasing
+            boxX -= 14;
+            box.setImageDrawable(imageBoxLeft);
+        }
+
+        //Check box position
+        if (boxX < 0) {
+            boxX = 0;
+            box.setImageDrawable(imageBoxRight);
+        }
+        if (frameWidth - boxSize < boxX) {
+            boxX = frameWidth - boxSize;
+            box.setImageDrawable(imageBoxLeft);
+        }
+        box.setX(boxX);
     }
 
     public void startGame(View view) {
