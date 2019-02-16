@@ -1,5 +1,6 @@
 package br.com.alessanderleite.catchtheballversiontwo;
 
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     //Score
     private TextView scoreLabel, highScoreLabel;
     private int score, highScore, timeCount;
+    private SharedPreferences settins;
 
     //Class
     private Timer timer;
@@ -106,6 +109,10 @@ public class MainActivity extends AppCompatActivity {
                 pinkY = frameHeight + 30;
                 score += 30;
                 //Change FrameWidth
+                if (initialFrameWidth > frameWidth * 110 / 100) {
+                    frameWidth = frameWidth * 110 / 100;
+                    changeFrameWidth(frameWidth);
+                }
             }
 
             if (pinkY > frameHeight) pink_flg = false;
@@ -125,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
             //Change FrameWidth
             frameWidth = frameWidth * 80 / 100;
             changeFrameWidth(frameWidth);
+
+            if (frameWidth <= boxSize) {
+
+                gameOver();
+            }
         }
 
         if (blackY > frameHeight) {
@@ -172,6 +184,28 @@ public class MainActivity extends AppCompatActivity {
         gameFrame.setLayoutParams(params);
     }
 
+    public void gameOver() {
+        //Stop timer;
+        timer.cancel();
+        timer = null;
+        start_flg = false;
+
+        //Before showing startLayout, sleep 1 second.
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        changeFrameWidth(initialFrameWidth);
+
+        startLayout.setVisibility(View.VISIBLE);
+        box.setVisibility(View.INVISIBLE);
+        black.setVisibility(View.INVISIBLE);
+        orange.setVisibility(View.INVISIBLE);
+        pink.setVisibility(View.INVISIBLE);
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (start_flg) {
@@ -197,6 +231,9 @@ public class MainActivity extends AppCompatActivity {
             boxX = box.getX();
             boxY = box.getY();
         }
+
+        frameWidth = initialFrameWidth;
+
         box.setX(0.0f);
         black.setY(3000.0f);
         orange.setY(3000.0f);
