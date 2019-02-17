@@ -3,6 +3,7 @@ package br.com.alessanderleite.catchtheballversiontwo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -288,5 +289,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void quitGame(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            finishAndRemoveTask();
+        } else {
+            finish();
+        }
     }
 }
