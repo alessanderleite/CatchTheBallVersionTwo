@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     //Class
     private Timer timer;
     private Handler handler = new Handler();
+    private SoundPlayer soundPlayer;
 
     //Status
     private boolean start_flg = false;
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        soundPlayer = new SoundPlayer(this);
 
         gameFrame = findViewById(R.id.gameFrame);
         startLayout = findViewById(R.id.startLayout);
@@ -89,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         if (hitCheck(orangeCenterX, orangeCenterY)) {
             orangeX = frameHeight + 100;
             score += 10;
+            soundPlayer.playHitOrangeSound();
         }
 
         if (orangeY > frameHeight) {
@@ -119,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     frameWidth = frameWidth * 110 / 100;
                     changeFrameWidth(frameWidth);
                 }
+                soundPlayer.playHitPinkSound();
             }
 
             if (pinkY > frameHeight) pink_flg = false;
@@ -138,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             //Change FrameWidth
             frameWidth = frameWidth * 80 / 100;
             changeFrameWidth(frameWidth);
-
+            soundPlayer.playHitBlackSound();
             if (frameWidth <= boxSize) {
 
                 gameOver();
